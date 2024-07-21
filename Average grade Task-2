@@ -1,0 +1,57 @@
+/* calculate the average grade with GPA and then easily calculate using the conditional statement and keyword in python programming */
+
+def calculate_letter_grade(average_grade):
+    if average_grade >= 90:
+        return 'A'
+    elif average_grade >= 80:
+        return 'B'
+    elif average_grade >= 70:
+        return 'C'
+    elif average_grade >= 60:
+        return 'D'
+    else:
+        return 'F'
+
+def calculate_gpa(average_grade):
+    if average_grade >= 90:
+        return 4.0
+    elif average_grade >= 80:
+        return 3.0
+    elif average_grade >= 70:
+        return 2.0
+    elif average_grade >= 60:
+        return 1.0
+    else:
+        return 0.0
+
+def main():
+    grades = []
+    
+    while True:
+        grade_input = input("Enter a grade (or 'q' to quit): ")
+        if grade_input.lower() == 'q':
+            break
+        
+        try:
+            grade = float(grade_input)
+            if 0 <= grade <= 100:
+                grades.append(grade)
+            else:
+                print("Grade must be between 0 and 100. Please try again.")
+        except ValueError:
+            print("Invalid input. Please enter a valid grade number.")
+    
+    if grades:
+        average_grade = sum(grades) / len(grades)
+        print(f"\nAverage grade: {average_grade:.2f}")
+        
+        letter_grade = calculate_letter_grade(average_grade)
+        print(f"Letter grade: {letter_grade}")
+        
+        gpa = calculate_gpa(average_grade)
+        print(f"GPA: {gpa:.2f}")
+    else:
+        print("No grades entered. Exiting program.")
+
+if __name__ == "__main__":
+    main()
